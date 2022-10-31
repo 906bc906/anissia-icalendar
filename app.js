@@ -6,7 +6,7 @@ const tz = require('@touch4it/ical-timezones')
 
 async function generateICal() {
   const cal = initICal();
-  const list = await _fetchAnime();
+  const list = await fetchAnime();
   attachEvents(cal, list);
 
   await fs.mkdir("./output", {recursive: true});
