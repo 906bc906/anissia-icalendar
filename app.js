@@ -61,7 +61,6 @@ function attachEvents(cal, list) {
           start: dtStart,
           end: dtStart.plus({minute: 30}),
           summary: anime.subject,
-          timezone: 'Asia/Seoul',
         })
       }
     })
