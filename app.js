@@ -2,7 +2,7 @@ const ical = require('ical-generator');
 const fs = require('fs/promises');
 const axios = require('axios');
 const { DateTime } = require('luxon');
-
+const tz = require('@touch4it/ical-timezones')
 
 async function generateICal() {
   const cal = initICal();
@@ -14,11 +14,15 @@ async function generateICal() {
 }
 
 function initICal() {
-  return ical({
-    name: "anissia-icalendar",
+  const cal = ical({
+    name: "anissia",
     prodId: "//906bc906//anissia-icalendar//KR",
-    timezone: "Asia/Seoul",
-  })
+  });
+  cal.timezone({
+    name: "Asia/Seoul",
+    generator: tz.getVtimezoneComponent
+  });
+  return cal;
 }
 
 async function fetchAnime(){
