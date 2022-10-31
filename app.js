@@ -8,7 +8,7 @@ async function generateICal() {
   const cal = initICal();
   const list = await _fetchAnime();
   attachEvents(cal, list);
-  
+
   await fs.mkdir("./output", {recursive: true});
   await cal.save('./output/anissia-icalendar.ics')
 }
@@ -57,6 +57,7 @@ function attachEvents(cal, list) {
           start: dtStart,
           end: dtStart.plus({minute: 30}),
           summary: anime.subject,
+          timezone: 'Asia/Seoul',
         })
       }
     })
